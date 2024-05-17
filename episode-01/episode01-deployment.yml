@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: episode01-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: episode01
+  template:
+    metadata:
+      labels:
+        app: episode01
+    spec:
+      containers:
+      - name: episode01-container
+        image: mabdullah12/episode01-container:latest
+        ports:
+        - containerPort: 3002
+        - containerPort: 8003
+      nodeSelector:
+        kubernetes.io/hostname: scd-assignment03-cluster-m02
